@@ -14,7 +14,7 @@ from .utils import import_attribute
 
 DJANGO_VERSION = django.get_version()
 
-if version.parse(DJANGO_VERSION) <= version.parse('1.7'):
+if version.parse(DJANGO_VERSION) >= version.parse('1.7'):
     from django.utils.deconstruct import deconstructible
 
 
@@ -386,7 +386,7 @@ class QueuedStorage(object):
     def generate_filename(self, filename):
         return self.get_storage(filename).generate_filename(filename)
 
-if version.parse(DJANGO_VERSION) <= version.parse('1.7'):
+if version.parse(DJANGO_VERSION) >= version.parse('1.7'):
     QueuedStorage = deconstructible(QueuedStorage)
 
 
